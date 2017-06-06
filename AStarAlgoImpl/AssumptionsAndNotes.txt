@@ -1,26 +1,62 @@
+Pre-requisite:
+=============
+Version - 1.8 ( Chose this version as it allows to demonstrate my basic understanding with Lambda's )
+Problem map files (Eg. large_map.txt, small_map.txt) should be in selected project space.
+
+Please clone the project from URL and run
+
+Before Running: 
+================
+1. Open the file "large_map.txt" in project source 
+2. Verify the problem map is the one shared for assignment.
+3. Close the file.
+
+Run
+====
+
+After Running:
+==============
+1. Open the file "large_map.txt"
+2. Observe for correctness of path paved with '#' as instructed
+3. Close the file.
+
+To Run the same for other input paths:
+1. Please copy required problem map file i.e "can be any name.txt" to the project space
+2. Open AStarAlgo.java.
+3. Edit TERRAIN_INFO field with respective problem map file.
+4. Run
+5. Open and check your problem map file. 
+
+
 Assumptions:
--	Asuuming the are to be only Square i.e ROWS & COLUMNS should be equal. If not, the input file for game stands invalid.
+============
+-	Assuming the are to be only Square i.e ROWS & COLUMNS should be equal. If not, the input file for game stands invalid.
 -	Assuming that data present in file has only valid tile information. Any other characters apart from registered, file stands invalid.
 
 General:
--	Though the solution appears as single monolithic model, modularisation to comply with Single Responsibility Principle is taken care.
--	Decorater design patter is used and try with resources is used.
+========
+-	Though the solution appears as single monolithic model, modularization to comply with Single Responsibility Principle is taken care.
+-	Decorator design patter is used and try with resources is used.
 -	A PriorityQueue with behavior given in Lambda expression.
 -	To capture/receive/store result of static method, non-static fields cannot be used, so made some fields/references as static one.
 -	The submitted code focuses primarily implementing the AStar strategy correctly.
--	Practices for UnitTestCases are little relaxed. However, each method has its own use and responsiblity to do without mixing other.
+-	Practices for UnitTestCases are little relaxed. However, each method has its own use and responsibility to do without mixing other.
 -	Implementation is tested for SampleTerrain and "large_map.txt" given. 
 	Results are captured in uploaded files "SmallMap_Results.txt" and "LargeMap_Results.txt"
 
 Exception Handling and Error Presentation:
+===========================================
 - If either start point or end point is not set in input file, processing the marking shortest path will return.
 	A custom exception can be thrown here. Because of time constraint i did not proceed doing so.
 - While preparing terrain from supplied info from file, if file consists
 
 
 FILE : AStarAlgo.java
+======================
 
-Final Fields: Input File Name on which AStar has to work and cost of each tile in terrain
+Final Fields:
+--------------
+Holds details of Input File Name on which AStar has to work and cost of each tile in terrain
 -	public static final String TERRAIN_INFO = "large_map.txt";
 -	public static final int STARTPOINT_COST = 1;
 -	public static final int ENDPOINT_COST = 1;
@@ -29,17 +65,21 @@ Final Fields: Input File Name on which AStar has to work and cost of each tile i
 -   public static final int MOUNTAIN_COST = 3;
 
 Note:
+-----
 :- Setter methods to set the required input file and to dynamically modify the cost of participants is the actual idea.
 :- A registration kind of method could have been a better bet. Such that all valid tiles/points can be registered with their respective cost. I segregated only cell & info but did not implement registrtation due to time constraint.
 	
 Public Methods: 
+----------------
 The following methods are chosen to be public in order to facilitate setting the required tile information from outside to create a terrain required and to invoke AStar algo.
 -	public static void setBlocked(int i, int j);
 -	public static void setStartCell(int i, int j);
 -	public static void setEndCell(int i, int j);
 -	public static void identifyShortestPath(int tiles, int si, int sj, int ei, int ej) {
 
-Private Methods: Which are solely for operational use and not necessary to be given out
+Private Methods:
+---------------- 
+The following methods are chosen to be private as they are solely for operational use and not necessary to be given out
 -	private static void checkAndUpdateCost(Cell current, Cell t);
 -	private static void AStar();
 -	private static int setTerrainSize(File file, Charset encoding);
@@ -50,6 +90,7 @@ Private Methods: Which are solely for operational use and not necessary to be gi
 -	private static void markShortestPath();
 
 FILE : Cell.java
+================
 Cell that is created holds all its respective information like its own placement, its associated cost, its final cost, its parent.
 
-Fields are left default intentionally as "AStarAlgo.java" from same package will be calculating and updating relavent fields and using few.
+Fields are left default intentionally as "AStarAlgo.java" from same package will be calculating and updating relevant fields and using few.
