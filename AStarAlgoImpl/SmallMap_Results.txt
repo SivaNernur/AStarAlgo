@@ -1,0 +1,32 @@
+small_map.txt
+
+Terrain Square Dimension : 5
+Prepare Terrain
+Size of terrain = 5
+Mark Shortest Path
+
+ Grid: 
+SO  0   0   0   0   
+BL  BL  0   BL  0   
+0   0   0   0   0   
+0   0   0   0   BL  
+BL  BL  0   BL  DE  
+
+
+Scores for cells: 
+0   9   18  24  31  
+BL  BL  16  BL  24  
+31  23  21  20  23  
+31  26  24  24  BL  
+BL  BL  28  BL  25  
+
+Path: 
+[4, 4] -> [3, 3] -> [2, 3] -> [1, 2] -> [0, 1] -> [0, 0]
+
+Check the file: It should reflect with path calculated
+
+##^^^
+~~#~.
+**.#.
+^..#~
+~~*~#
